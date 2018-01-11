@@ -42,4 +42,6 @@ public class SampleReference {
 
     @NonNull
     public native Long tick();
+
+    public native void tickWithBlock(@NonNull SampleInterfaceDelegateAndroid delegate);
 }

@@ -13,6 +13,12 @@ public protocol SampleDelegate: class {
     static func setTimestamp(_ value: Int64)
 }
 
+public protocol SampleBlockDelegate {
+
+    func onCall()
+
+}
+
 private extension SampleDelegate {
 
     func timeStampTest() -> Int64 {
@@ -58,6 +64,10 @@ public class SampleReference {
             return delegate.timeStampTest()
         }
         return  -1
+    }
+
+    public func tickWithBlock(_ block: SampleBlockDelegate) {
+        block.onCall()
     }
 
     public func funcWithNil() -> SampleValue? {

@@ -78,4 +78,16 @@ public class SampleReferenceTest {
         delegateAndroid.release();
     }
 
+    @Test
+    public void testDelegateBlock() {
+        final boolean[] isFlag = new boolean[1];
+        sampleReference.tickWithBlock(new SampleInterfaceDelegateAndroid() {
+            @Override
+            public void onCall() {
+                isFlag[0] = true;
+            }
+        });
+        Assert.assertTrue(isFlag[0]);
+    }
+
 }
