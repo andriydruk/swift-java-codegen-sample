@@ -81,13 +81,19 @@ public class SampleReferenceTest {
     @Test
     public void testDelegateBlock() {
         final boolean[] isFlag = new boolean[1];
-        sampleReference.tickWithBlock(new SampleInterfaceDelegateAndroid() {
+        sampleReference.tickWithBlock(new SampleReference.SampleInterfaceDelegateAndroid() {
             @Override
             public void onCall() {
                 isFlag[0] = true;
             }
         });
         Assert.assertTrue(isFlag[0]);
+    }
+
+    @Test
+    public void testFloatingPointer() {
+        Assert.assertTrue(sampleReference.floatCheck(1.0f) == 3.0f);
+        Assert.assertTrue(sampleReference.doubleCheck(1.0) == 3.0);
     }
 
 }

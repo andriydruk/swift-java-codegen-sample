@@ -1,7 +1,8 @@
 package com.readdle.swiftjava.sample;
 
+import com.readdle.codegen.anotation.SwiftCallbackFunc;
+import com.readdle.codegen.anotation.SwiftDelegate;
 import com.readdle.codegen.anotation.SwiftError;
-import com.readdle.codegen.anotation.SwiftFunc;
 import com.readdle.codegen.anotation.SwiftReference;
 
 import android.support.annotation.NonNull;
@@ -9,6 +10,14 @@ import android.support.annotation.Nullable;
 
 @SwiftReference(importPackages = {"SampleAppCore"})
 public class SampleReference {
+
+    @SwiftDelegate(importPackages = {"SampleAppCore"}, protocols = {"SampleBlockDelegate"})
+    public interface SampleInterfaceDelegateAndroid {
+
+        @SwiftCallbackFunc
+        void onCall();
+
+    }
 
     // Swift JNI private native pointer
     private long nativePointer = 0L;
@@ -44,4 +53,10 @@ public class SampleReference {
     public native Long tick();
 
     public native void tickWithBlock(@NonNull SampleInterfaceDelegateAndroid delegate);
+
+    @NonNull
+    public native Float floatCheck(@NonNull Float var1);
+
+    @NonNull
+    public native Double doubleCheck(@NonNull Double var1);
 }

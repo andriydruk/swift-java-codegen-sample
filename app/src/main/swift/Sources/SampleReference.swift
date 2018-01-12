@@ -74,4 +74,12 @@ public class SampleReference {
         delegate?.setSampleValue(value: nil)
         return delegate?.funcWithNil()
     }
+
+    public func floatCheck(_ float: Float) -> Float {
+        return float + 2.0
+    }
+
+    public func doubleCheck(_ double: Double) -> Double {
+        return double + 2.0
+    }
 }
