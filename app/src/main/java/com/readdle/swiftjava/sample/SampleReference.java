@@ -59,4 +59,8 @@ public class SampleReference {
 
     @NonNull
     public native Double doubleCheck(@NonNull Double var1);
+
+    @NonNull
+    public native Exception exceptionCheck(@NonNull Exception var1);
+
 }

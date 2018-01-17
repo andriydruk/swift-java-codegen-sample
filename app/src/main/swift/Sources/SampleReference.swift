@@ -82,4 +82,13 @@ public class SampleReference {
     public func doubleCheck(_ double: Double) -> Double {
         return double + 2.0
     }
+
+    public func exceptionCheck(_ var1: Error) -> Error {
+        let domain = (var1 as! NSError).domain
+        let code = (var1 as! NSError).code
+        NSLog("Error: \(domain) \(code)")
+
+        return var1
+    }
+
 }
