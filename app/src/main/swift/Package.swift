@@ -24,7 +24,7 @@ let package = Package(
         .target(
             name: "SampleAppCoreBridge",
             dependencies: ["SampleAppCore", "Java", "JavaCoder", "java_swift"],
-            path: ".build/generated"
+            path: "GeneratedSources"
         ),
     ],
     swiftLanguageVersions: [4]
