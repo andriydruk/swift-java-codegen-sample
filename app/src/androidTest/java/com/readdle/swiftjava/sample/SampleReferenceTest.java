@@ -106,4 +106,9 @@ public class SampleReferenceTest {
         Assert.assertTrue(sampleReference.exceptionCheck(exception3).getMessage().equals(exception3.getMessage()));
     }
 
+    @Test
+    public void testEnclose() {
+        Assert.assertNotNull(sampleReference.enclose(SampleReference.SampleReferenceEnclose.init()));
+    }
+
 }

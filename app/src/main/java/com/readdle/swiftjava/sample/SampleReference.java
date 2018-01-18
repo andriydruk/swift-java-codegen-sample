@@ -11,6 +11,25 @@ import android.support.annotation.Nullable;
 @SwiftReference(importPackages = {"SampleAppCore"})
 public class SampleReference {
 
+    @SwiftReference(importPackages = {"SampleAppCore"})
+    public static class SampleReferenceEnclose {
+
+
+        // Swift JNI private native pointer
+        private long nativePointer = 0L;
+
+        // Swift JNI private constructor
+        // Should be private. Don't call this constructor from Java!
+        private SampleReferenceEnclose() {
+        }
+
+        // Swift JNI release method
+        public native void release();
+
+        @NonNull
+        public static native SampleReferenceEnclose init();
+    }
+
     @SwiftDelegate(importPackages = {"SampleAppCore"}, protocols = {"SampleBlockDelegate"})
     public interface SampleInterfaceDelegateAndroid {
 
@@ -62,5 +81,8 @@ public class SampleReference {
 
     @NonNull
     public native Exception exceptionCheck(@NonNull Exception var1);
+
+    @NonNull
+    public native SampleReferenceEnclose enclose(@NonNull SampleReferenceEnclose var1);
 
 }

@@ -28,6 +28,13 @@ private extension SampleDelegate {
     }
 }
 
+public class SampleReferenceEnclose {
+
+    public init() {
+
+    }
+}
+
 public class SampleReference {
 
     weak var delegate: SampleDelegate?
@@ -88,6 +95,10 @@ public class SampleReference {
         let code = (var1 as! NSError).code
         NSLog("Error: \(domain) \(code)")
 
+        return var1
+    }
+
+    public func enclose(_ var1: SampleReferenceEnclose) -> SampleReferenceEnclose {
         return var1
     }
 
