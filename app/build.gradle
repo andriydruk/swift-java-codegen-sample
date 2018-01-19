@@ -1,16 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'net.zhuoweizhang.swiftandroid'
+apply plugin: 'com.readdle.android.swift'
 
 swift {
     cleanEnabled true
     debug {
         extraBuildFlags("-Xswiftc", "-DDEBUG")
-    }
-    release {
-        def passToLLVM = ["-Xswiftc", "-Xllvm", "-Xswiftc"]
-
-        // Disable broken "Loop Specialization for Array Properties"
-        extraBuildFlags(passToLLVM + "-sil-disable-pass=array-specialize")
     }
 }
 
