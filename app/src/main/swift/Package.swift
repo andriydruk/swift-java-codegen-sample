@@ -9,8 +9,15 @@ let generatedName = "Generated"
 let generatedPath = ".build/\(generatedName.lowercased())"
 
 let isSourcesGenerated: Bool = {
+    let basePath = URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .path
+
+    let fileManager = FileManager()
+    fileManager.changeCurrentDirectoryPath(basePath)
+
     var isDirectory: ObjCBool = false
-    let exists = FileManager().fileExists(atPath: generatedPath, isDirectory: &isDirectory)
+    let exists = fileManager.fileExists(atPath: generatedPath, isDirectory: &isDirectory)
 
     return exists && isDirectory.boolValue
 }()
