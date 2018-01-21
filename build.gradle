@@ -5,11 +5,12 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "https://dl.bintray.com/readdle/maven" }
         mavenLocal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'net.zhuoweizhang:swiftandroid:1.0.4'
+        classpath 'com.readdle.android.swift:gradle:1.1.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
