@@ -37,20 +37,14 @@ public class SampleReferenceEnclose {
 
 public class SampleReference {
 
-    weak var delegate: SampleDelegate?
+    // TODO: need some extra work for returning abstract type
+    public weak var delegate: SampleDelegate?
+    public var string: String = "str1"
+    public static var staticString: String = "str1"
 
 	public init() {
 		
 	}
-
-    // TODO: need some extra work for returning abstract type
-//    public func getDelegate() -> SampleDelegate?  {
-//        return self.delegate
-//    }
-
-    public func setDelegate(_ delegate: SampleDelegate?) {
-        self.delegate = delegate
-    }
 
     public func getRandomValue() -> SampleValue {
     	return SampleValue(str1: "1", str2: "2", str3: "3")

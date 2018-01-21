@@ -111,4 +111,15 @@ public class SampleReferenceTest {
         Assert.assertNotNull(sampleReference.enclose(SampleReference.SampleReferenceEnclose.init()));
     }
 
+    @Test
+    public void testGetterSetter() {
+        String string = sampleReference.getString();
+        sampleReference.setString(string);
+        Assert.assertTrue(string.equals(sampleReference.getString()));
+
+        string = SampleReference.getStaticString();
+        SampleReference.setStaticString(string);
+        Assert.assertTrue(string.equals(SampleReference.getStaticString()));
+    }
+
 }

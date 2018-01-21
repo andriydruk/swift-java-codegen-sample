@@ -3,7 +3,9 @@ package com.readdle.swiftjava.sample;
 import com.readdle.codegen.anotation.SwiftCallbackFunc;
 import com.readdle.codegen.anotation.SwiftDelegate;
 import com.readdle.codegen.anotation.SwiftError;
+import com.readdle.codegen.anotation.SwiftGetter;
 import com.readdle.codegen.anotation.SwiftReference;
+import com.readdle.codegen.anotation.SwiftSetter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -66,7 +68,8 @@ public class SampleReference {
     //@Nullable @SwiftFunc
     //public native SampleDelegateAndroid getDelegate();
 
-    public native void setDelegate(SampleDelegateAndroid delegate);
+    @SwiftSetter
+    public native void setDelegate(@Nullable SampleDelegateAndroid delegate);
 
     @NonNull
     public native Long tick();
@@ -84,5 +87,17 @@ public class SampleReference {
 
     @NonNull
     public native SampleReferenceEnclose enclose(@NonNull SampleReferenceEnclose var1);
+
+    @SwiftGetter @NonNull
+    public native String getString();
+
+    @SwiftSetter
+    public native void setString(@NonNull String string);
+
+    @SwiftGetter("staticString") @NonNull
+    public native static String getStaticString();
+
+    @SwiftSetter("staticString")
+    public native static void setStaticString(@NonNull String string);
 
 }
