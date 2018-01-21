@@ -17,7 +17,7 @@ public class SampleValueTest {
 
     @Before
     public void setUp() {
-        System.loadLibrary("SampleAppCoreBridge");
+        System.loadLibrary("SampleAppCore");
         JavaSwift.init();
     }
 

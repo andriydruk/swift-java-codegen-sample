@@ -20,7 +20,7 @@ public class SampleReferenceTest {
 
     @Before
     public void setUp() {
-        System.loadLibrary("SampleAppCoreBridge");
+        System.loadLibrary("SampleAppCore");
         JavaSwift.init();
 
         this.sampleReference = SampleReference.init();
