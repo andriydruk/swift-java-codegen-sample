@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.support.annotation.Nullable;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
@@ -120,6 +121,24 @@ public class SampleReferenceTest {
         string = SampleReference.getStaticString();
         SampleReference.setStaticString(string);
         Assert.assertTrue(string.equals(SampleReference.getStaticString()));
+    }
+
+    @Test
+    public void testBlock() {
+        String result = sampleReference.funcWithBlock(new SampleReference.CompletionBlock() {
+            @Nullable
+            @Override
+            public String call(@Nullable Exception error, @Nullable String string) {
+                if (error == null) {
+                    return string;
+                }
+                else {
+                    return null;
+                }
+            }
+        });
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.equals("123"));
     }
 
 }

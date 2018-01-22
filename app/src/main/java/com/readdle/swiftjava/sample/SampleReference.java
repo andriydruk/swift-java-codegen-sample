@@ -1,19 +1,22 @@
 package com.readdle.swiftjava.sample;
 
+import com.readdle.codegen.anotation.SwiftBlock;
 import com.readdle.codegen.anotation.SwiftCallbackFunc;
 import com.readdle.codegen.anotation.SwiftDelegate;
 import com.readdle.codegen.anotation.SwiftError;
+import com.readdle.codegen.anotation.SwiftFunc;
 import com.readdle.codegen.anotation.SwiftGetter;
+import com.readdle.codegen.anotation.SwiftParam;
 import com.readdle.codegen.anotation.SwiftReference;
 import com.readdle.codegen.anotation.SwiftSetter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-@SwiftReference(importPackages = {"SampleAppCore"})
+@SwiftReference
 public class SampleReference {
 
-    @SwiftReference(importPackages = {"SampleAppCore"})
+    @SwiftReference
     public static class SampleReferenceEnclose {
 
 
@@ -32,7 +35,7 @@ public class SampleReference {
         public static native SampleReferenceEnclose init();
     }
 
-    @SwiftDelegate(importPackages = {"SampleAppCore"}, protocols = {"SampleBlockDelegate"})
+    @SwiftDelegate(protocols = {"SampleBlockDelegate"})
     public interface SampleInterfaceDelegateAndroid {
 
         @SwiftCallbackFunc
@@ -99,5 +102,14 @@ public class SampleReference {
 
     @SwiftSetter("staticString")
     public native static void setStaticString(@NonNull String string);
+
+    @SwiftBlock("(Error?, String?) -> String?")
+    public interface CompletionBlock {
+        @Nullable
+        String call(@Nullable Exception error, @Nullable String string);
+    }
+
+    @SwiftFunc("funcWithBlock(completion:)") @Nullable
+    public native String funcWithBlock(@SwiftParam("((Error?, String?) -> String?)") CompletionBlock block);
 
 }

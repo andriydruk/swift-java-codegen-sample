@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-@SwiftDelegate(importPackages = {"SampleAppCore"}, protocols = {"SampleDelegate"})
+@SwiftDelegate(protocols = {"SampleDelegate"})
 public abstract class SampleDelegateAndroid {
 
     // Swift JNI private native pointer

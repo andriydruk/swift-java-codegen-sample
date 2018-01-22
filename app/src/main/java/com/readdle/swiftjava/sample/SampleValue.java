@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 import java.util.Objects;
 
-@SwiftValue(importPackages = {"SampleAppCore"})
+@SwiftValue
 public class SampleValue {
 
     @NonNull

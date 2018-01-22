@@ -96,4 +96,9 @@ public class SampleReference {
         return var1
     }
 
+
+    public func funcWithBlock(completion: ((Error?, String?) -> String?)?) -> String? {
+        return completion?(nil, "123") ?? "null"
+    }
+
 }
