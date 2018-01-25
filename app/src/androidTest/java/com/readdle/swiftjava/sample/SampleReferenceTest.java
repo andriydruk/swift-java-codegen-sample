@@ -9,9 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
+import android.util.Log;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -23,7 +25,6 @@ public class SampleReferenceTest {
     public void setUp() {
         System.loadLibrary("SampleAppCore");
         JavaSwift.init();
-
         this.sampleReference = SampleReference.init();
     }
 
@@ -80,15 +81,19 @@ public class SampleReferenceTest {
     }
 
     @Test
-    public void testDelegateBlock() {
-        final boolean[] isFlag = new boolean[1];
+    public void testLocalTableOverflow() {
+        final int[] isFlag = new int[1];
+        JavaSwift.dumpReferenceTables();
         sampleReference.tickWithBlock(new SampleReference.SampleInterfaceDelegateAndroid() {
+
             @Override
-            public void onCall() {
-                isFlag[0] = true;
+            public void onCall(@NonNull Integer pr1, @NonNull Integer pr2, @NonNull Double pr3, @NonNull Double pr4) {
+                JavaSwift.dumpReferenceTables();
+                isFlag[0] = pr1;
             }
         });
-        Assert.assertTrue(isFlag[0]);
+        JavaSwift.dumpReferenceTables();
+        Assert.assertTrue(isFlag[0] == 128);
     }
 
     @Test

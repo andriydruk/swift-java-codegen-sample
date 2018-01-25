@@ -27,8 +27,8 @@ android {
 }
 
 dependencies {
-    annotationProcessor "com.github.andriydruk.swift-java-codegen:compiler:0.5.7"
-    implementation 'com.github.andriydruk.swift-java-codegen:library:0.5.7'
+    annotationProcessor "com.github.andriydruk.swift-java-codegen:compiler:0.5.9"
+    implementation 'com.github.andriydruk.swift-java-codegen:library:0.5.9'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'

@@ -15,7 +15,7 @@ public protocol SampleDelegate: class {
 
 public protocol SampleBlockDelegate {
 
-    func onCall()
+    func onCall(_ pr1: Int, _ pr2: Int, _ pr3: Double, _ pr4: Double)
 
 }
 
@@ -68,7 +68,10 @@ public class SampleReference {
     }
 
     public func tickWithBlock(_ block: SampleBlockDelegate) {
-        block.onCall()
+        // For table overflow test
+        for i in 0 ..< 129 {
+            block.onCall(i, i * 100, Double(i) * 10000.0, Double(i) * 1000000.0)
+        }
     }
 
     public func funcWithNil() -> SampleValue? {
