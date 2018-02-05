@@ -104,4 +104,28 @@ public class SampleReference {
         return completion?(nil, "123") ?? "null"
     }
 
+    public func getAbstractTypeList() -> [AbstractType] {
+        return [FirstChild(), SecondChild(), ThirdChild(), FourthChild()]
+    }
+
+    public func getAbstractType() -> AbstractType {
+        return FirstChild()
+    }
+
+    public func getFirstChild() -> FirstChild {
+        return FirstChild()
+    }
+
+    public func getSecondChild() -> SecondChild {
+        return SecondChild()
+    }
+
+    public func getThirdChild() -> ThirdChild {
+        return ThirdChild()
+    }
+
+    public func getFourthChild() -> FourthChild {
+        return FourthChild()
+    }
+
 }

@@ -2,6 +2,7 @@ package com.readdle.swiftjava.sample;
 
 import com.readdle.codegen.anotation.JavaSwift;
 import com.readdle.codegen.anotation.SwiftError;
+import com.readdle.swiftjava.sample.asbtracthierarhy.AbstractType;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -13,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
-import android.util.Log;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -25,6 +25,7 @@ public class SampleReferenceTest {
     public void setUp() {
         System.loadLibrary("SampleAppCore");
         JavaSwift.init();
+        SwiftEnvironment.initEnvironment();
         this.sampleReference = SampleReference.init();
     }
 
@@ -144,6 +145,20 @@ public class SampleReferenceTest {
         });
         Assert.assertNotNull(result);
         Assert.assertTrue(result.equals("123"));
+    }
+
+    @Test
+    public void testAbstractTypes() {
+        AbstractType child = sampleReference.getAbstractType();
+        Assert.assertTrue(child.basicMethod().equals("FirstChild"));
+        child = sampleReference.getFirstChild();
+        Assert.assertTrue(child.basicMethod().equals("FirstChild"));
+        child = sampleReference.getSecondChild();
+        Assert.assertTrue(child.basicMethod().equals("SecondChild"));
+        child = sampleReference.getThirdChild();
+        Assert.assertTrue(child.basicMethod().equals("ThirdChild"));
+        child = sampleReference.getFourthChild();
+        Assert.assertTrue(child.basicMethod().equals("SecondChild"));
     }
 
 }

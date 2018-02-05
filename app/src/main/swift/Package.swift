@@ -60,9 +60,10 @@ let package = Package(
         .package(url: "https://github.com/andriydruk/java_swift.git", .branch("master")),
         .package(url: "https://github.com/andriydruk/swift-java.git", .branch("master")),
         .package(url: "https://github.com/andriydruk/swift-java-coder.git", .branch("master")),
+        .package(url: "https://github.com/andriydruk/swift-anycodable.git", .branch("master")),
     ],
     targets: addGenerated([
-        .target(name: packageName),
+        .target(name: packageName, dependencies: ["AnyCodable"])
     ]),
     swiftLanguageVersions: [4]
 )

@@ -6,12 +6,19 @@ import com.readdle.codegen.anotation.SwiftDelegate;
 import com.readdle.codegen.anotation.SwiftError;
 import com.readdle.codegen.anotation.SwiftFunc;
 import com.readdle.codegen.anotation.SwiftGetter;
-import com.readdle.codegen.anotation.SwiftParam;
 import com.readdle.codegen.anotation.SwiftReference;
 import com.readdle.codegen.anotation.SwiftSetter;
+import com.readdle.swiftjava.sample.asbtracthierarhy.AbstractType;
+import com.readdle.swiftjava.sample.asbtracthierarhy.FirstChild;
+import com.readdle.swiftjava.sample.asbtracthierarhy.FourthChild;
+import com.readdle.swiftjava.sample.asbtracthierarhy.SecondChild;
+import com.readdle.swiftjava.sample.asbtracthierarhy.ThirdChild;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SwiftReference
 public class SampleReference {
@@ -110,6 +117,24 @@ public class SampleReference {
     }
 
     @SwiftFunc("funcWithBlock(completion:)") @Nullable
-    public native String funcWithBlock(@SwiftParam("((Error?, String?) -> String?)") CompletionBlock block);
+    public native String funcWithBlock(@SwiftBlock CompletionBlock block);
+
+    @NonNull
+    public native List<AbstractType> getAbstractTypeList();
+
+    @NonNull
+    public native AbstractType getAbstractType();
+
+    @NonNull
+    public native FirstChild getFirstChild();
+
+    @NonNull
+    public native SecondChild getSecondChild();
+
+    @NonNull
+    public native ThirdChild getThirdChild();
+
+    @NonNull
+    public native FourthChild getFourthChild();
 
 }
