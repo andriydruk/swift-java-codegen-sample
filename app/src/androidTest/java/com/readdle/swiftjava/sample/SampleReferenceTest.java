@@ -161,4 +161,40 @@ public class SampleReferenceTest {
         Assert.assertTrue(child.basicMethod().equals("SecondChild"));
     }
 
+    @Test
+    public void testThrowableFunc() {
+        SampleDelegateAndroid sampleDelegateAndroid = new SampleDelegateAndroid() {
+            @Override
+            void onSetSampleValue(SampleValue value) {
+
+            }
+        };
+        try {
+            sampleReference.throwableFunc(sampleDelegateAndroid, true);
+            Assert.fail();
+        }
+        catch (Exception e) {
+            Assert.assertTrue(e.getMessage().equals("Foundation.NSErrorThe operation could not be completed"));
+        }
+        try {
+            sampleReference.throwableFunc(sampleDelegateAndroid, false);
+        }
+        catch (Exception e) {
+            Assert.fail();
+        }
+        try {
+            sampleReference.throwableFuncWithReturnType(sampleDelegateAndroid, true);
+            Assert.fail();
+        }
+        catch (Exception e) {
+            Assert.assertTrue(e.getMessage().equals("Foundation.NSErrorThe operation could not be completed"));
+        }
+        try {
+            Assert.assertTrue(sampleReference.throwableFuncWithReturnType(sampleDelegateAndroid, false).equals("throwableFuncWithReturnType"));
+        }
+        catch (Exception e) {
+            Assert.fail();
+        }
+    }
+
 }

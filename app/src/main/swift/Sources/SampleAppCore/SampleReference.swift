@@ -11,6 +11,10 @@ public protocol SampleDelegate: class {
     static func getTimestamp() -> Int64
 
     static func setTimestamp(_ value: Int64)
+
+    func throwableFunc(_ flag: Bool) throws
+
+    func throwableFuncWithReturnType(_ flag: Bool) throws -> String
 }
 
 public protocol SampleBlockDelegate {
@@ -76,7 +80,7 @@ public class SampleReference {
 
     public func funcWithNil() -> SampleValue? {
         delegate?.setSampleValue(value: nil)
-        return delegate?.funcWithNil()
+        return try! delegate?.funcWithNil()
     }
 
     public func floatCheck(_ float: Float) -> Float {
@@ -98,7 +102,6 @@ public class SampleReference {
     public func enclose(_ var1: SampleReferenceEnclose) -> SampleReferenceEnclose {
         return var1
     }
-
 
     public func funcWithBlock(completion: ((Error?, String?) -> String?)?) -> String? {
         return completion?(nil, "123") ?? "null"
@@ -126,6 +129,14 @@ public class SampleReference {
 
     public func getFourthChild() -> FourthChild {
         return FourthChild()
+    }
+
+    public func throwableFunc(_ delegate: SampleDelegate, _ flag: Bool) throws {
+        return try delegate.throwableFunc(flag)
+    }
+
+    public func throwableFuncWithReturnType(_ delegate: SampleDelegate, _ flag: Bool) throws -> String {
+        return try delegate.throwableFuncWithReturnType(flag)
     }
 
 }

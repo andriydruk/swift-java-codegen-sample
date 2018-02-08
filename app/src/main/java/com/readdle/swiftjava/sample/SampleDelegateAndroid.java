@@ -55,6 +55,25 @@ public abstract class SampleDelegateAndroid {
         return null;
     }
 
+    @SwiftCallbackFunc
+    public void throwableFunc(@NonNull Boolean flag) throws Exception {
+        if (flag) {
+            throw new IllegalArgumentException("Exception");
+        }
+    }
+
+    @SwiftCallbackFunc @NonNull
+    public String throwableFuncWithReturnType(@NonNull Boolean flag) throws Exception {
+        if (flag) {
+            throw new IllegalArgumentException("Exception");
+        }
+        else {
+            return "throwableFuncWithReturnType";
+        }
+    }
+
+
+
     abstract void onSetSampleValue(SampleValue value);
 
 }
